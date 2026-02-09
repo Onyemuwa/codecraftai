@@ -1,0 +1,3665 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saphy Creative - Strategy. Storytelling. Creative Execution Built for Real Growth</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpg" href="https://i.ibb.co/fzwm6k99/favicon.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Glide.js for sliders -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/css/glide.theme.min.css">
+    <style>
+        :root {
+            --primary: #f3e4fe;
+            --secondary: #6f2f9f;
+            --accent: #000448;
+            --text-dark: #1a202c;
+            --text-light: #f7fafc;
+            --gradient: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+        }
+        
+        /* Dark Mode Variables */
+        .dark-mode {
+            --text-dark: #f7fafc;
+            --text-light: #1a202c;
+            background-color: #0f172a;
+            color: var(--text-dark);
+        }
+        
+        .dark-mode .bg-white {
+            background-color: #1e293b;
+        }
+        
+        .dark-mode .bg-light {
+            background-color: #334155;
+        }
+        
+        .dark-mode .text-gray-600 {
+            color: #cbd5e1;
+        }
+        
+        .dark-mode .text-gray-800 {
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .border-gray-200 {
+            border-color: #475569;
+        }
+        
+        .dark-mode .portfolio-card,
+        .dark-mode .testimonial-card,
+        .dark-mode .service-card,
+        .dark-mode .contact-info-card,
+        .dark-mode .pricing-card {
+            background-color: #1e293b;
+            border-color: #475569;
+        }
+        
+        .dark-mode .calculator-card {
+            background-color: #1e293b;
+            border-color: #475569;
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .chat-modal {
+            background-color: #1e293b;
+            border-color: #475569;
+        }
+        
+        .dark-mode .chat-input {
+            background-color: #334155;
+            color: #e2e8f0;
+            border-color: #475569;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .dark-mode ::-webkit-scrollbar-track {
+            background: #334155;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Gradient Background */
+        .gradient-bg {
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 4, 72, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(111, 47, 159, 0.4) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .gradient-bg > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animations */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px); 
+            }
+            50% { 
+                transform: translateY(-10px); 
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        .slide-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* New Features: Portfolio Modal */
+        .portfolio-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .portfolio-modal.active {
+            display: flex;
+        }
+
+        .portfolio-modal-container {
+            background-color: white;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .dark-mode .portfolio-modal-container {
+            background-color: #1e293b;
+            color: #e2e8f0;
+        }
+
+        .portfolio-modal-header {
+            padding: 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--gradient);
+            color: white;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .portfolio-modal-body {
+            padding: 24px;
+        }
+
+        /* New Features: Interactive Stats Counter */
+        .counter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        /* New Features: Testimonial Slider */
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 20px;
+        }
+
+        /* New Features: Service Calculator */
+        .calculator-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .calculator-result {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Pricing Cards */
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--secondary);
+            transform: scale(1.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 0;
+            right: -30px;
+            background: var(--secondary);
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 20px 0;
+        }
+
+        .price-duration {
+            font-size: 1rem;
+            color: #6b7280;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            flex-grow: 1;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark-mode .service-features li {
+            border-bottom: 1px solid #475569;
+        }
+
+        .service-features li i {
+            color: var(--secondary);
+            margin-right: 8px;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 4px;
+            height: 10px;
+            background: white;
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(15px);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            padding: 6px 0;
+            transition: color 0.3s ease;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .nav-link {
+                padding: 8px 0;
+                font-size: 16px;
+            }
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .mobile-nav-link:hover {
+            background-color: rgba(111, 47, 159, 0.1);
+            color: var(--secondary);
+        }
+
+        /* Buttons */
+        .cta-button-primary {
+            background-color: var(--primary);
+            color: var(--accent);
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(243, 228, 254, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        @media (min-width: 640px) {
+            .cta-button-primary {
+                width: auto;
+                margin-bottom: 0;
+                margin-right: 12px;
+            }
+        }
+
+        .cta-button-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+            z-index: -1;
+        }
+
+        .cta-button-primary:hover::before {
+            left: 100%;
+        }
+
+        .cta-button-primary:hover {
+            background-color: #e6d1f9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(243, 228, 254, 0.4);
+        }
+
+        .cta-button-secondary {
+            border: 2px solid white;
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .cta-button-secondary {
+                width: auto;
+            }
+        }
+
+        .cta-button-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: white;
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button-secondary:hover::before {
+            width: 100%;
+        }
+
+        .cta-button-secondary:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        .dark-mode .section-title {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #6b7280;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .section-subtitle {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Client Logos */
+        .client-logo {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark-mode .client-logo {
+            background-color: #1e293b;
+            border-color: #475569;
+        }
+
+        .client-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .client-logo {
+                padding: 1.5rem;
+            }
+            
+            .client-logo img {
+                max-height: 70px;
+            }
+        }
+
+        .client-logo:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Service Cards */
+        .service-card {
+            background-color: white;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            background-color: var(--secondary);
+        }
+
+        @media (min-width: 768px) {
+            .service-icon {
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+
+        .service-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .dark-mode .service-title {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .service-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-list {
+            color: var(--accent);
+            list-style-type: none;
+            padding: 0;
+            flex-grow: 1;
+            font-size: 0.875rem;
+        }
+
+        .dark-mode .service-list {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .service-list {
+                font-size: 1rem;
+            }
+        }
+
+        .service-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .service-list li::before {
+            content: '•';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Portfolio Cards */
+        .portfolio-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-image {
+            height: 10rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-image {
+                height: 12rem;
+            }
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image::after {
+            opacity: 1;
+        }
+
+        .portfolio-item-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .dark-mode .portfolio-item-title {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-item-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        .portfolio-item-desc {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            font-size: 0.875rem;
+        }
+
+        .dark-mode .portfolio-item-desc {
+            color: #cbd5e1;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-item-desc {
+                font-size: 1rem;
+            }
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-tag {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Testimonial Cards */
+        .testimonial-card {
+            background-color: white;
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+        }
+
+        .testimonial-text {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+            font-style: italic;
+            font-size: 0.875rem;
+        }
+
+        .dark-mode .testimonial-text {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-text {
+                font-size: 1rem;
+            }
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            background-color: var(--secondary);
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .dark-mode .about-text {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .about-text {
+                font-size: 1.125rem;
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        @media (min-width: 768px) {
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        .stat-label {
+            color: var(--accent);
+            font-size: 0.75rem;
+        }
+
+        .dark-mode .stat-label {
+            color: #cbd5e1;
+        }
+
+        @media (min-width: 768px) {
+            .stat-label {
+                font-size: 0.875rem;
+            }
+        }
+
+        .philosophy-card {
+            background: var(--gradient);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-card {
+                padding: 2rem;
+            }
+        }
+
+        .philosophy-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .philosophy-quote {
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-quote {
+                font-size: 1.125rem;
+            }
+        }
+
+        .philosophy-point {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .philosophy-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-icon {
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+
+        .philosophy-point-title {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-point-title {
+                font-size: 1rem;
+            }
+        }
+
+        .philosophy-point-desc {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        @media (min-width: 768px) {
+            .philosophy-point-desc {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Contact Section */
+        .contact-info-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+            height: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .contact-info-card {
+                padding: 2rem;
+            }
+        }
+
+        .contact-info-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .dark-mode .contact-info-title {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .contact-info-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .contact-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+            color: var(--accent);
+            font-size: 0.875rem;
+        }
+
+        .dark-mode .contact-detail-item {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .contact-detail-item {
+                font-size: 1rem;
+            }
+        }
+
+        .social-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-size: 0.875rem;
+        }
+
+        .dark-mode .social-title {
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .social-title {
+                font-size: 1rem;
+            }
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--secondary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        .social-link:hover {
+            background-color: #5a2480;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent);
+        }
+
+        .footer-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, #d9bbf9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-brand {
+                font-size: 1.5rem;
+            }
+        }
+
+        .footer-desc {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .footer-desc {
+                font-size: 1rem;
+            }
+        }
+
+        .footer-copyright {
+            color: #9ca3af;
+            font-size: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-copyright {
+                font-size: 0.875rem;
+            }
+        }
+
+        .footer-heading {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-heading {
+                font-size: 1rem;
+            }
+        }
+
+        .footer-links {
+            list-style-type: none;
+            padding: 0;
+            color: #d1d5db;
+            font-size: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-links {
+                font-size: 0.875rem;
+            }
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link {
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        /* Chat Button */
+        .chat-button {
+            background-color: var(--secondary);
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(111, 47, 159, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .chat-button {
+                width: 3.5rem;
+                height: 3.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        .chat-button:hover {
+            background-color: #5a2480;
+            transform: scale(1.1);
+        }
+
+        /* Chat Modal */
+        .chat-modal {
+            position: fixed;
+            bottom: 5rem;
+            right: 1rem;
+            width: calc(100% - 2rem);
+            max-width: 20rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 50;
+            border: 1px solid #e5e7eb;
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .chat-modal {
+                right: 1.5rem;
+                width: 20rem;
+            }
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 0.75rem 0.75rem 0 0;
+        }
+
+        .close-chat-btn {
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+
+        .close-chat-btn:hover {
+            color: white;
+        }
+
+        .chat-body {
+            padding: 1rem;
+        }
+
+        .chat-messages {
+            margin-bottom: 1rem;
+            max-height: 15rem;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 0.5rem;
+        }
+
+        .bot-message p {
+            background-color: #f3f4f6;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+
+        .dark-mode .bot-message p {
+            background-color: #334155;
+            color: #e2e8f0;
+        }
+
+        @media (min-width: 768px) {
+            .bot-message p {
+                font-size: 0.875rem;
+            }
+        }
+
+        .user-message {
+            text-align: right;
+        }
+
+        .user-message div {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            max-width: 16rem;
+            font-size: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .user-message div {
+                font-size: 0.875rem;
+            }
+        }
+
+        .chat-input-container {
+            display: flex;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem 0 0 0.375rem;
+            font-size: 0.75rem;
+            background-color: white;
+        }
+
+        @media (min-width: 768px) {
+            .chat-input {
+                font-size: 0.875rem;
+            }
+        }
+
+        .chat-send-btn {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0 0.375rem 0.375rem 0;
+            transition: background-color 0.3s ease;
+            font-size: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .chat-send-btn {
+                font-size: 0.875rem;
+            }
+        }
+
+        .chat-send-btn:hover {
+            background-color: #5a2480;
+        }
+
+        /* Logo Styles */
+        .website-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .website-logo {
+                height: 45px;
+            }
+        }
+
+        /* Utility Classes */
+        .text-left {
+            text-align: left;
+        }
+
+        /* Background Sections */
+        .bg-light {
+            background-color: #f9fafb;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        /* Responsive Grid Adjustments */
+        @media (max-width: 640px) {
+            .grid {
+                gap: 1rem;
+            }
+            
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .lg\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .lg\:grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            .md\:grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+            
+            .lg\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .space-x-4 {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .space-x-4 > * {
+                margin-right: 0 !important;
+            }
+        }
+
+        @media (min-width: 640px) and (max-width: 768px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .md\:grid-cols-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .lg\:grid-cols-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .lg\:grid-cols-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .lg\:grid-cols-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .lg\:grid-cols-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Advanced Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        /* Gradient Text Animation */
+        .gradient-text-animate {
+            background: linear-gradient(-45deg, #000448, #6f2f9f, #000448, #6f2f9f);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 8s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* New Features: Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--gradient);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle::before {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .dark-mode-toggle.active::before {
+            transform: translateX(30px);
+        }
+
+        /* New Features: Progress Bar */
+        .progress-bar {
+            height: 6px;
+            background: var(--primary);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        /* New Features: Interactive Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Portfolio Slider */
+        .portfolio-slider {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .glide__slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portfolio-slide {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .portfolio-slide img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Newsletter Signup */
+        .newsletter-form {
+            background: var(--gradient);
+            padding: 40px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            margin: 20px 0;
+            font-size: 1rem;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient);
+            transform: translateX(-50%);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 40px;
+            width: calc(50% - 30px);
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .process-step {
+            background: #1e293b;
+        }
+
+        .process-step:nth-child(odd) {
+            margin-left: auto;
+        }
+
+        .process-step:nth-child(even) {
+            margin-right: auto;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 50%;
+            top: 30px;
+        }
+
+        .process-step:nth-child(odd)::before {
+            right: -40px;
+        }
+
+        .process-step:nth-child(even)::before {
+            left: -40px;
+        }
+
+        .process-step h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dark-mode .process-step h3 {
+            color: #e2e8f0;
+        }
+
+        .process-step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .dark-mode .process-step p {
+            color: #cbd5e1;
+        }
+
+        /* Blog Cards */
+        .blog-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-mode .blog-card {
+            background-color: #1e293b;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .dark-mode .blog-title {
+            color: #e2e8f0;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .dark-mode .blog-excerpt {
+            color: #cbd5e1;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .blog-date {
+            color: var(--secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .read-more-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .read-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(111, 47, 159, 0.3);
+        }
+
+        /* Blog Modal */
+        .blog-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .blog-modal.active {
+            display: flex;
+        }
+
+        .blog-modal-container {
+            background-color: white;
+            width: 100%;
+            max-width: 900px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .dark-mode .blog-modal-container {
+            background-color: #1e293b;
+            color: #e2e8f0;
+        }
+
+        .blog-modal-header {
+            padding: 24px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--gradient);
+            color: white;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .blog-modal-body {
+            padding: 24px;
+        }
+
+        .blog-article-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .dark-mode .blog-article-title {
+            color: #e2e8f0;
+        }
+
+        .blog-article-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .dark-mode .blog-article-meta {
+            border-bottom-color: #475569;
+        }
+
+        .blog-article-date,
+        .blog-article-category {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .blog-article-content {
+            line-height: 1.8;
+        }
+
+        .blog-article-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            color: var(--accent);
+        }
+
+        .dark-mode .blog-article-content h3 {
+            color: #e2e8f0;
+        }
+
+        .blog-article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-article-content ul,
+        .blog-article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .blog-article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            animation: typing 1.4s ease-in-out infinite;
+        }
+
+        .typing-indicator span:nth-child(1) { animation-delay: 0s; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200/50 transition-all duration-300 dark:bg-gray-900/95 dark:border-gray-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <!-- Website Logo -->
+                    <img src="https://i.ibb.co/DfRXNfzm/Whats-App-Image-2026-01-26-at-12-35-05-AM-removebg-preview.png" 
+                         alt="Saphy Creative Logo" 
+                         class="website-logo mr-2">
+                    <span class="text-xl md:text-2xl font-bold text-gradient">Saphy Creative</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#home" class="nav-link">Home</a>
+                        <a href="#services" class="nav-link">Services</a>
+                        <a href="#portfolio" class="nav-link">Portfolio</a>
+                        <a href="#blog" class="nav-link">Blog</a>
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                        <!-- Dark Mode Toggle -->
+                        <div class="dark-mode-toggle ml-4" id="dark-mode-toggle"></div>
+                    </div>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#services" class="mobile-nav-link">Services</a>
+                <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+                <a href="#blog" class="mobile-nav-link">Blog</a>
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+                <!-- Dark Mode Toggle Mobile -->
+                <div class="px-4 py-3">
+                    <div class="dark-mode-toggle" id="mobile-dark-mode-toggle"></div>
+                    <span class="ml-3 text-sm text-gray-600 dark:text-gray-300">Dark Mode</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="portfolio-modal">
+        <div class="portfolio-modal-container">
+            <div class="portfolio-modal-header">
+                <h2 class="text-xl md:text-2xl font-bold">Project Details</h2>
+                <button id="close-portfolio" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="portfolio-modal-body">
+                <div id="portfolio-details-content">
+                    <!-- Portfolio details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div id="blog-modal" class="blog-modal">
+        <div class="blog-modal-container">
+            <div class="blog-modal-header">
+                <h2 class="text-xl md:text-2xl font-bold">Blog Article</h2>
+                <button id="close-blog" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="blog-modal-body">
+                <div id="blog-article-content">
+                    <!-- Blog article content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-16 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white py-12 md:py-20" data-aos="fade-up">
+                <div class="floating">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6">
+                        We help founders build<br>
+                        <span class="text-[#f3e4fe] gradient-text-animate">brands that scale</span>
+                    </h1>
+                </div>
+                <p class="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 max-w-3xl mx-auto opacity-90" data-aos="fade-up" data-aos-delay="200">
+                    Strategy. Storytelling. Creative execution built for real growth.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4" data-aos="fade-up" data-aos-delay="400">
+                    <button onclick="scrollToSection('services')" class="cta-button-primary pulse">
+                        View Our Packages
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="cta-button-secondary">
+                        Start Your Project
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 flex justify-center">
+            <div class="scroll-indicator">
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do -->
+    <section class="py-12 md:py-16 bg-light dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
+                <h2 class="section-title">What We Do</h2>
+                <p class="section-subtitle">
+                    We specialize in strategy-first branding, content, and digital storytelling that turns businesses into category leaders.
+                </p>
+            </div>
+            
+            <!-- Client Logos -->
+            <div class="mb-12 md:mb-16" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-center text-base md:text-lg font-semibold mb-6 md:mb-8 text-gray-600 dark:text-gray-300">Trusted by leading brands</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-center">
+                    <div class="client-logo hover-lift" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="https://i.ibb.co/d0J3d1sV/Weixin-Image-20260202185101-59-68-removebg-preview.png" alt="Client Logo 1">
+                    </div>
+                    <div class="client-logo hover-lift" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://i.ibb.co/BVLtyRR9/Weixin-Image-20260202185104-60-68-removebg-preview.png" alt="Client Logo 2">
+                    </div>
+                    <div class="client-logo hover-lift" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="https://i.ibb.co/pvfWVQ2N/Weixin-Image-20260202185106-61-68-removebg-preview.png" alt="Client Logo 3">
+                    </div>
+                    <div class="client-logo hover-lift" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="https://i.ibb.co/x86zssyQ/Weixin-Image-20260202190320-63-68-removebg-preview.png" alt="Client Logo 4">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Stats -->
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-12" data-aos="fade-up">
+                <div class="stat-item text-center">
+                    <div class="counter" data-target="200">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item text-center">
+                    <div class="counter" data-target="95">0</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-item text-center">
+                    <div class="counter" data-target="5">0</div>
+                    <div class="stat-label">Countries Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Packages -->
+    <section id="services" class="py-12 md:py-16 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
+                <h2 class="section-title">Our Services & Packages</h2>
+                <p class="section-subtitle">Transparent pricing for exceptional results</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+                <!-- Brand Strategy Package -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon mb-4 mx-auto">
+                        <i class="fas fa-lightbulb text-white text-lg md:text-xl"></i>
+                    </div>
+                    <h3 class="service-title">Brand Strategy</h3>
+                    <div class="price">$2,500</div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Complete brand foundation and strategy development</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Brand Discovery Workshop</li>
+                        <li><i class="fas fa-check"></i> Competitive Analysis</li>
+                        <li><i class="fas fa-check"></i> Target Audience Profiling</li>
+                        <li><i class="fas fa-check"></i> Brand Positioning Strategy</li>
+                        <li><i class="fas fa-check"></i> Messaging Framework</li>
+                        <li><i class="fas fa-check"></i> Brand Guidelines Document</li>
+                    </ul>
+                    <button onclick="scrollToSection('contact')" class="cta-button-primary mt-6">
+                        Choose Package
+                    </button>
+                </div>
+                
+                <!-- Content Marketing Package -->
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon mb-4 mx-auto">
+                        <i class="fas fa-megaphone text-white text-lg md:text-xl"></i>
+                    </div>
+                    <h3 class="service-title">Content Marketing</h3>
+                    <div class="price">$1,050</div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Monthly content strategy and creation</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Content Strategy Development</li>
+                        <li><i class="fas fa-check"></i> 8x Blog Articles (500-700 words)</li>
+                        <li><i class="fas fa-check"></i> 12x Social Media Posts</li>
+                        <li><i class="fas fa-check"></i> 2x Email Newsletters</li>
+                        <li><i class="fas fa-check"></i> Content Calendar Management</li>
+                        <li><i class="fas fa-check"></i> Performance Analytics Report</li>
+                    </ul>
+                    <button onclick="scrollToSection('contact')" class="cta-button-primary mt-6">
+                        Choose Package
+                    </button>
+                </div>
+                
+                <!-- Marketing Consultation -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon mb-4 mx-auto bg-[#000448]">
+                        <i class="fas fa-chart-line text-white text-lg md:text-xl"></i>
+                    </div>
+                    <h3 class="service-title">Marketing Strategy</h3>
+                    <div class="price">Let's Talk</div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Custom marketing solutions tailored to your needs</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Custom Marketing Strategy</li>
+                        <li><i class="fas fa-check"></i> Campaign Planning & Execution</li>
+                        <li><i class="fas fa-check"></i> Performance Marketing</li>
+                        <li><i class="fas fa-check"></i> Conversion Optimization</li>
+                        <li><i class="fas fa-check"></i> Analytics & Reporting</li>
+                        <li><i class="fas fa-check"></i> Ongoing Support</li>
+                    </ul>
+                    <button onclick="scrollToSection('contact')" class="cta-button-primary mt-6">
+                        Schedule Consultation
+                    </button>
+                </div>
+            </div>
+
+            <!-- Service Calculator -->
+            <div class="mt-12 md:mt-16" data-aos="fade-up">
+                <div class="calculator-card">
+                    <h3 class="text-xl font-bold mb-4">Project Cost Calculator</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Get an instant estimate for your project</p>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2 dark:text-gray-300">Select Package</label>
+                            <div class="space-y-3">
+                                <label class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer dark:border-gray-600">
+                                    <div class="flex items-center">
+                                        <input type="radio" name="package" value="2500" class="mr-3" checked>
+                                        <div>
+                                            <span class="font-medium dark:text-gray-300">Brand Strategy</span>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Complete brand foundation</p>
+                                        </div>
+                                    </div>
+                                    <span class="font-bold text-secondary">$2,500</span>
+                                </label>
+                                
+                                <label class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer dark:border-gray-600">
+                                    <div class="flex items-center">
+                                        <input type="radio" name="package" value="1050" class="mr-3">
+                                        <div>
+                                            <span class="font-medium dark:text-gray-300">Content Marketing</span>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Monthly content package</p>
+                                        </div>
+                                    </div>
+                                    <span class="font-bold text-secondary">$1,050</span>
+                                </label>
+                                
+                                <label class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer dark:border-gray-600">
+                                    <div class="flex items-center">
+                                        <input type="radio" name="package" value="custom" class="mr-3">
+                                        <div>
+                                            <span class="font-medium dark:text-gray-300">Marketing Strategy</span>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">Custom solutions</p>
+                                        </div>
+                                    </div>
+                                    <span class="font-bold text-secondary">Let's Talk</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2 dark:text-gray-300">Project Duration</label>
+                            <input type="range" id="duration" min="1" max="12" value="1" class="w-full">
+                            <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mt-2">
+                                <span>1 Month</span>
+                                <span id="duration-value">1 Month</span>
+                                <span>12 Months</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2 dark:text-gray-300">Add-on Services (Optional)</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center justify-between dark:text-gray-300">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" class="mr-2" value="500">
+                                        <span>Social Media Management (+$500/month)</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-center justify-between dark:text-gray-300">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" class="mr-2" value="300">
+                                        <span>SEO Optimization (+$300/month)</span>
+                                    </div>
+                                </label>
+                                <label class="flex items-center justify-between dark:text-gray-300">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" class="mr-2" value="400">
+                                        <span>Email Marketing (+$400/month)</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="calculator-result">
+                            <div id="total-cost" class="text-3xl mb-2">$2,500</div>
+                            <p class="text-sm opacity-90">Estimated Project Cost</p>
+                            <p class="text-xs opacity-75 mt-2">*Marketing Strategy requires consultation for custom pricing</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button onclick="scrollToSection('contact')" class="cta-button-primary w-full md:w-auto">
+                                Get Started Today
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="py-12 md:py-16 bg-light dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
+                <h2 class="section-title">Featured Work</h2>
+                <p class="section-subtitle">Case studies that showcase real results</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100" data-project="enviable">
+                    <div class="portfolio-image bg-gradient-to-br from-[#000448] to-[#6f2f9f]">
+                        <span class="text-white text-lg md:text-xl font-bold">Enviable Tricycles</span>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="portfolio-item-title">Market Penetration Strategy</h3>
+                        <p class="portfolio-item-desc">Complete brand overhaul and market positioning for sustainable transportation</p>
+                        <span class="portfolio-tag">Strategy</span>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200" data-project="plupera">
+                    <div class="portfolio-image bg-gradient-to-br from-[#6f2f9f] to-[#4a1d6b]">
+                        <span class="text-white text-lg md:text-xl font-bold">Plupera</span>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="portfolio-item-title">Brand + Content + Campaign</h3>
+                        <p class="portfolio-item-desc">Full-service brand development with integrated content strategy</p>
+                        <span class="portfolio-tag">Full Service</span>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300" data-project="nella">
+                    <div class="portfolio-image bg-gradient-to-br from-[#000448] to-[#2c3aa3]">
+                        <span class="text-white text-lg md:text-xl font-bold">Nella (UK)</span>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="portfolio-item-title">Cleaning Brand Overhaul</h3>
+                        <p class="portfolio-item-desc">International brand transformation for UK cleaning services</p>
+                        <span class="portfolio-tag bg-[#000448]">Rebranding</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Gallery Slider -->
+            <div class="mt-16" data-aos="fade-up">
+                <h3 class="section-title text-center">Our Creative Portfolio</h3>
+                <p class="section-subtitle text-center">A showcase of our design expertise and creative solutions</p>
+                
+                <div class="portfolio-slider mt-8">
+                    <div class="glide">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides">
+                                <!-- Slide 1 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/wFGcVZ7B/Weixin-Image-20260202182208-44-68.jpg" alt="Company Flyer 1">
+                                    </div>
+                                </li>
+                                <!-- Slide 2 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/ccNQd4nz/Weixin-Image-20260202182212-45-68.jpg" alt="Company Flyer 2">
+                                    </div>
+                                </li>
+                                <!-- Slide 3 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/m5jJqSk3/Weixin-Image-20260202182215-46-68.jpg" alt="Company Flyer 3">
+                                    </div>
+                                </li>
+                                <!-- Slide 4 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/qMnVPqBz/Weixin-Image-20260202182220-48-68.jpg" alt="Company Flyer 4">
+                                    </div>
+                                </li>
+                                <!-- Slide 5 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/5X71CXkh/Weixin-Image-20260202182217-47-68.jpg" alt="Company Flyer 5">
+                                    </div>
+                                </li>
+                                <!-- Slide 6 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/HTB2Tt5q/Weixin-Image-20260202182224-50-68.jpg" alt="Company Flyer 6">
+                                    </div>
+                                </li>
+                                <!-- Slide 7 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/zhmkJf29/Weixin-Image-20260202182222-49-68.jpg" alt="Company Flyer 7">
+                                    </div>
+                                </li>
+                                <!-- Slide 8 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/wNvxHmSb/Weixin-Image-20260202182227-51-68.jpg" alt="Company Flyer 8">
+                                    </div>
+                                </li>
+                                <!-- Slide 9 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/SX6t8L8X/Weixin-Image-20260202182229-52-68.jpg" alt="Company Flyer 9">
+                                    </div>
+                                </li>
+                                <!-- Slide 10 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/G4NmFWvH/Weixin-Image-20260202182232-53-68.jpg" alt="Company Flyer 10">
+                                    </div>
+                                </li>
+                                <!-- Slide 11 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/TqJ0MxWZ/Weixin-Image-20260202182235-54-68.jpg" alt="Company Flyer 11">
+                                    </div>
+                                </li>
+                                <!-- Slide 12 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/BV3yK5Xj/Weixin-Image-20260202182239-55-68.jpg" alt="Company Flyer 12">
+                                    </div>
+                                </li>
+                                <!-- Slide 13 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/mCnfrn4V/Weixin-Image-20260202182242-56-68.jpg" alt="Company Flyer 13">
+                                    </div>
+                                </li>
+                                <!-- Slide 14 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/cKdvvhc3/Weixin-Image-20260202182245-57-68.jpg" alt="Company Flyer 14">
+                                    </div>
+                                </li>
+                                <!-- Slide 15 -->
+                                <li class="glide__slide">
+                                    <div class="portfolio-slide">
+                                        <img src="https://i.ibb.co/Q3jK2JDm/Weixin-Image-20260202182248-58-68.jpg" alt="Company Flyer 15">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="glide__arrows" data-glide-el="controls">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="py-12 md:py-16 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="section-title">Our Process</h2>
+                <p class="section-subtitle">A proven methodology for brand success</p>
+            </div>
+            
+            <div class="process-timeline" data-aos="fade-up">
+                <!-- Step 1 -->
+                <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                    <h3>
+                        <i class="fas fa-search text-secondary"></i>
+                        Discovery & Research
+                    </h3>
+                    <p>Deep dive into your business, market, and audience to define strategic direction. We analyze competitors, market trends, and customer needs to build a solid foundation for your brand strategy.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="process-step" data-aos="fade-left" data-aos-delay="200">
+                    <h3>
+                        <i class="fas fa-chess text-secondary"></i>
+                        Strategy Development
+                    </h3>
+                    <p>Create comprehensive brand strategy, positioning, and messaging framework. We develop unique value propositions, brand architecture, and strategic roadmaps aligned with your business goals.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="process-step" data-aos="fade-right" data-aos-delay="300">
+                    <h3>
+                        <i class="fas fa-paint-brush text-secondary"></i>
+                        Creative Execution
+                    </h3>
+                    <p>Bring strategy to life through design, content, and digital experiences. Our creative team translates strategic insights into compelling visual identities, messaging, and brand experiences.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="process-step" data-aos="fade-left" data-aos-delay="400">
+                    <h3>
+                        <i class="fas fa-rocket text-secondary"></i>
+                        Implementation & Launch
+                    </h3>
+                    <p>Deploy across all touchpoints and optimize for maximum impact. We ensure seamless integration across digital platforms, marketing channels, and customer touchpoints.</p>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="process-step" data-aos="fade-right" data-aos-delay="500">
+                    <h3>
+                        <i class="fas fa-chart-line text-secondary"></i>
+                        Growth & Optimization
+                    </h3>
+                    <p>Continuously measure, analyze, and optimize for sustained growth. We provide ongoing support, performance tracking, and iterative improvements to ensure long-term success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-12 md:py-16 bg-light dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
+                <h2 class="section-title">Latest Insights</h2>
+                <p class="section-subtitle">Thought leadership, tips, and industry insights from our team</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Blog Post 1 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-image">
+                        <i class="fas fa-lightbulb text-white text-4xl"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">HOW I BECAME A CREDIBLE BRAND AND ATTRACTED 200 STRANGERS IN 2 DAYS</h3>
+                        <p class="blog-excerpt">Learn how to establish your expertise, build trust, leverage social proof, and create compelling offers that attract strangers to your brand...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Recent</span>
+                            <button class="read-more-btn" data-article="1">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-image">
+                        <i class="fas fa-clock text-white text-4xl"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">IT WILL ONLY TAKE 5 SECONDS FOR THIS TO HAPPEN TO YOUR BRAND</h3>
+                        <p class="blog-excerpt">Discover how to make every second count when a stranger lands on your brand. Learn actionable tips for creating a lasting impression...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Recent</span>
+                            <button class="read-more-btn" data-article="2">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="blog-image">
+                        <i class="fas fa-palette text-white text-4xl"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">THIS IS WHAT YOUR BRAND COLOR COMMUNICATES</h3>
+                        <p class="blog-excerpt">Understand how different colors evoke distinct emotions and associations. Learn what your brand color communicates to your audience...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Recent</span>
+                            <button class="read-more-btn" data-article="3">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8 md:mt-12">
+                <button onclick="loadMoreBlogPosts()" class="cta-button-primary" data-aos="fade-up">
+                    Load More Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews & Testimonials -->
+    <section class="py-12 md:py-16 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+            
+            <!-- Testimonial Slider -->
+            <div class="testimonial-slider mb-12" data-aos="fade-up">
+                <div class="testimonial-track" id="testimonial-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="flex text-yellow-400 mb-3 md:mb-4 text-sm md:text-base">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Saphy Creative helped us stand out and scale with clarity. Their strategic approach transformed our brand presence and increased our market share by 40% in just 6 months."</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar">
+                                    <span class="text-white font-semibold text-sm md:text-base">P</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm md:text-base">Plupera Team</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">CEO, Plupera</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="flex text-yellow-400 mb-3 md:mb-4 text-sm md:text-base">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"They got our vision instantly. Our brand finally feels real and authentic to who we are. The website they built increased our conversion rate by 150%."</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar">
+                                    <span class="text-white font-semibold text-sm md:text-base">N</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm md:text-base">Nella (UK)</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Founder, Nella Cleaning</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-6 space-x-4">
+                    <button class="slider-prev bg-secondary text-white p-2 rounded-full hover:bg-[#5a2480]">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-next bg-secondary text-white p-2 rounded-full hover:bg-[#5a2480]">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-12 md:py-16 bg-gradient-to-r from-[#000448] to-[#6f2f9f]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="newsletter-form" data-aos="fade-up">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Stay Ahead of the Curve</h2>
+                <p class="mb-6 opacity-90">Get exclusive branding tips and industry insights delivered to your inbox</p>
+                <div class="max-w-md mx-auto">
+                    <input type="email" id="newsletter-email" placeholder="Your email address" class="newsletter-input">
+                    <button id="subscribe-btn" class="cta-button-primary w-full">Subscribe Now</button>
+                    <p class="text-sm opacity-75 mt-4">No spam, ever. Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-12 md:py-16 bg-light dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="section-title text-left">Who We Are</h2>
+                    <p class="about-text">
+                        Saphy Creative is a creative strategy studio and growth partner for founders and brands ready to scale.
+                    </p>
+                    <p class="about-text">
+                        We believe branding isn't decoration—it's direction. That's why we combine strategic thinking with standout execution.
+                    </p>
+                    
+                    <div class="stats-grid mb-6 md:mb-8">
+                        <div class="stat-item">
+                            <div class="stat-number" id="projects-counter">0</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="clients-counter">0</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="countries-counter">0</div>
+                            <div class="stat-label">Countries</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="scrollToSection('contact')" class="cta-button-primary">
+                        Work With Us
+                    </button>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="philosophy-card">
+                        <h3 class="philosophy-title">Our Philosophy</h3>
+                        <blockquote class="philosophy-quote">
+                            "Branding isn't decoration—it's direction. We don't just make things look pretty; we make them perform."
+                        </blockquote>
+                        <div class="philosophy-point">
+                            <div class="philosophy-icon">
+                                <i class="fas fa-rocket text-lg md:text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="philosophy-point-title">Strategy First</p>
+                                <p class="philosophy-point-desc">Every creative decision is strategic</p>
+                            </div>
+                        </div>
+                        <div class="philosophy-point mt-4">
+                            <div class="philosophy-icon">
+                                <i class="fas fa-bullseye text-lg md:text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="philosophy-point-title">Results Driven</p>
+                                <p class="philosophy-point-desc">We measure success by your growth</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-12 md:py-16 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 md:mb-12" data-aos="fade-up">
+                <h2 class="section-title">Let's Create Something That Stands Out</h2>
+                <p class="section-subtitle">Ready to grow with clarity and creativity?</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-1 gap-8 md:gap-12">
+                <!-- Contact Info -->
+                <div data-aos="fade-up">
+                    <div class="contact-info-card">
+                        <h3 class="contact-info-title">Get In Touch</h3>
+                        
+                        <div class="contact-details">
+                            <div class="contact-detail-item">
+                                <i class="fas fa-envelope text-[#6f2f9f] text-lg"></i>
+                                <span>saphycreative@gmail.com</span>
+                            </div>
+                            <div class="contact-detail-item">
+                                <i class="fas fa-phone text-[#6f2f9f] text-lg"></i>
+                                <span>+234 913 2395 548</span>
+                            </div>
+                            <div class="contact-detail-item">
+                                <i class="fas fa-clock text-[#6f2f9f] text-lg"></i>
+                                <span>Mon-Fri: 9AM-6PM GMT+1</span>
+                            </div>
+                        </div>
+                        
+                        <h4 class="social-title">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/saphycreatives?igsh=MThxZ3V2amQ4NXA4eA==" target="_blank" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://x.com/saphycreative?s=08" target="_blank" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.facebook.com/share/18wTDDkZcE/" target="_blank" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://pin.it/7GOxcOvT5" target="_blank" class="social-link">
+                                <i class="fab fa-pinterest"></i>
+                            </a>
+                            <a href="https://youtube.com/@saphycreative?si=dlcFh0uazcP0LgnQ" target="_blank" class="social-link">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/saphycreative" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple Contact Call-to-Action -->
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <div class="calculator-card">
+                    <h3 class="text-xl font-bold mb-4">Ready to Get Started?</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Choose one of our packages or schedule a consultation call</p>
+                    <div class="space-y-4">
+                        <div>
+                            <button onclick="window.location.href='mailto:saphycreative@gmail.com?subject=Brand Strategy Package ($2,500)'" class="cta-button-primary w-full">
+                                <i class="fas fa-lightbulb mr-2"></i> Start with Brand Strategy - $2,500
+                            </button>
+                        </div>
+                        <div>
+                            <button onclick="window.location.href='mailto:saphycreative@gmail.com?subject=Content Marketing Package ($1,050/month)'" class="cta-button-primary w-full">
+                                <i class="fas fa-megaphone mr-2"></i> Start with Content Marketing - $1,050/month
+                            </button>
+                        </div>
+                        <div>
+                            <button onclick="window.location.href='mailto:saphycreative@gmail.com?subject=Marketing Strategy Consultation'" class="cta-button-primary w-full">
+                                <i class="fas fa-chart-line mr-2"></i> Schedule Marketing Strategy Consultation
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-6">Or call us directly: <a href="tel:+2349132395548" class="text-secondary font-semibold">+234 913 2395 548</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#000448] text-white py-8 md:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.ibb.co/DfRXNfzm/Whats-App-Image-2026-01-26-at-12-35-05-AM-removebg-preview.png" 
+                             alt="Saphy Creative Logo" 
+                             class="website-logo mr-3">
+                        <h3 class="footer-brand">Saphy Creative</h3>
+                    </div>
+                    <p class="footer-desc">Creative strategy studio and growth partner for founders and brands ready to scale.</p>
+                    <p class="footer-copyright">© 2025 Saphy Creative | All Rights Reserved</p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-links">
+                        <li>Brand Strategy - $2,500</li>
+                        <li>Content Marketing - $1,050</li>
+                        <li>Marketing Strategy - Custom</li>
+                        <li>Consultation Calls</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
+                        <li><a href="#blog" class="footer-link">Blog</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Support Button -->
+    <div class="fixed bottom-6 right-4 md:right-6 z-50">
+        <button id="chat-btn" class="chat-button">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chat-modal" class="chat-modal">
+        <div class="chat-header">
+            <h3 class="text-sm md:text-base">Chat with Saphy AI</h3>
+            <button id="close-chat" class="close-chat-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-messages">
+                <div class="chat-message bot-message">
+                    <p>👋 Hi! I'm Saphy AI, here to help with any questions about our services. What can I assist you with today?</p>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type your message..." class="chat-input">
+                <button id="send-chat" class="chat-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glide.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/glide.min.js"></script>
+
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Blog Articles Data with your provided content
+        const blogArticles = {
+            1: {
+                title: "HOW I BECAME A CREDIBLE BRAND AND ATTRACTED 200 STRANGERS IN 2 DAYS",
+                date: "Recent",
+                category: "Brand Building",
+                content: `
+                    <h2 class="blog-article-title">HOW I BECAME A CREDIBLE BRAND AND ATTRACTED 200 STRANGERS IN 2 DAYS</h2>
+                    <div class="blog-article-meta">
+                        <span class="blog-article-date">Recent</span>
+                        <span class="blog-article-category">Brand Building</span>
+                    </div>
+                    <div class="blog-article-content">
+                        <p>You must have seen the brands you believe are big, blowing more and more on social media. Getting attention and attracting a lot of people to themselves. You know this because you are one of those people the brand attracts and when you look at them, you wonder if you will become such a brand- A CREDIBLE BRAND!</p>
+                        
+                        <p>I was once in your shoes and in this article, I will be showing you how your brand can become a credible brand that attracts strangers; that can attract as many as 200 strangers in 2 days.</p>
+                        
+                        <p>Becoming a credible brand is not as hard as it seems, it only needs you to put in efforts, be strategic and consistent, show your expertise and offer value. These attributes encourage strangers to trust you and when trust is created, you become attractive!.</p>
+                        
+                        <h3>Let's break down these attributes:</h3>
+                        
+                        <h4>1. Establishing Your Expertise</h4>
+                        <p>You can establish your expertise by creating consistent content. In this content, you are expected to share your knowledge and showcase the value you bring. You can do this through written content, videos or even podcasts. While doing this, you can also highlight your process and achievements, this is the shortest way to establish your expertise and show that you are credible.</p>
+                        
+                        <h4>2. Build Trust</h4>
+                        <p>Brands that attract are brands that are trusted and you can build trust by being consistent in posting your contents, sharing your story, values and mission and engaging with your audience. You can also offer free resources, tips that can help your followers. This gets your audience to understand the value you offer and the needs or problems you can solve for them.</p>
+                        
+                        <h4>3. Leverage Social Proof</h4>
+                        <p>Share testimonials from satisfied customers, always showcase these testimonials. You can also partner with influencers or credible brands in your industry to expand your reach.</p>
+                        
+                        <h4>4. Create a Compelling Offer</h4>
+                        <p>What makes you different from the same brand in your niche, you have to discover this and let your audience understand this unique value. When you do this, order a limited time offer such as a free trial, discount or exclusive content to motivate strangers to engage with your brand.</p>
+                        
+                        <h4>5. Promote Your Brand</h4>
+                        <p>You can do this by leveraging social media to promote your contents, offers and expertise, and also invite your friends, families and colleagues to share your content within their network. These actions will enable you to be in the faces of a lot of people, thereby attracting these people to your brand.</p>
+                    </div>
+                `
+            },
+            2: {
+                title: "IT WILL ONLY TAKE 5 SECONDS FOR THIS TO HAPPEN TO YOUR BRAND",
+                date: "Recent",
+                category: "First Impressions",
+                content: `
+                    <h2 class="blog-article-title">IT WILL ONLY TAKE 5 SECONDS FOR THIS TO HAPPEN TO YOUR BRAND</h2>
+                    <div class="blog-article-meta">
+                        <span class="blog-article-date">Recent</span>
+                        <span class="blog-article-category">First Impressions</span>
+                    </div>
+                    <div class="blog-article-content">
+                        <p>You have just 5 seconds to either make your brand stand out or fade out in that stranger's mind.</p>
+                        
+                        <p>In today's digital age, attention spans are shorter than ever. When someone lands on your website, social media page, or ad, they make a split-second decision about whether to stay or leave. Research shows that it takes just 5 seconds for a visitor to form an opinion about your brand.</p>
+                        
+                        <h3>MAKE EVERY OF THIS SECOND COUNT</h3>
+                        <p>To grab attention and keep visitors engaged:</p>
+                        <ul>
+                            <li><strong>Use strong visuals:</strong> Incorporate high-quality images, videos, or graphics that reflect your brand's personality.</li>
+                            <li><strong>Craft a compelling headline:</strong> Clearly communicate your unique value proposition and entice visitors to learn more.</li>
+                            <li><strong>Optimize your messaging:</strong> Ensure your content is concise, clear, and relevant to your target audience.</li>
+                        </ul>
+                        
+                        <h3>WHAT HAPPENS IN THOSE 5 SECONDS?</h3>
+                        <p>In just 5 seconds, a visitor will:</p>
+                        <ul>
+                            <li>Form an opinion about your brand's credibility and professionalism</li>
+                            <li>Decide whether your content is relevant to their needs or interests</li>
+                            <li>Determine whether to stay and explore further or hit the back button</li>
+                        </ul>
+                        
+                        <h3>MAKE A LASTING IMPRESSION</h3>
+                        <p>Don't let those 5 seconds slip away. Make a strong first impression and set your brand up for success.</p>
+                        
+                        <h4>Actionable Tips:</h4>
+                        <ol>
+                            <li>Audit your website and social media pages to ensure they're visually appealing and content is concise.</li>
+                            <li>Craft a compelling headline that clearly communicates your unique value proposition.</li>
+                            <li>Use strong visuals to break up text and enhance engagement.</li>
+                        </ol>
+                        
+                        <p>By making the most of those 5 seconds, you'll increase the chances of attracting and retaining visitors, driving engagement, and ultimately converting them into loyal customers.</p>
+                    </div>
+                `
+            },
+            3: {
+                title: "THIS IS WHAT YOUR BRAND COLOR COMMUNICATES",
+                date: "Recent",
+                category: "Brand Psychology",
+                content: `
+                    <h2 class="blog-article-title">THIS IS WHAT YOUR BRAND COLOR COMMUNICATES</h2>
+                    <div class="blog-article-meta">
+                        <span class="blog-article-date">Recent</span>
+                        <span class="blog-article-category">Brand Psychology</span>
+                    </div>
+                    <div class="blog-article-content">
+                        <p>Brand colors can significantly impact how your audience perceives your brand. Different colors evoke distinct emotions and associations. Here's a breakdown of what various brand colors can communicate:</p>
+                        
+                        <h3>Color Psychology in Branding</h3>
+                        
+                        <h4>🔴 Red: Energy & Passion</h4>
+                        <p>Energy, passion, urgency, excitement, and love. It's often associated with appetite and can stimulate feelings of excitement and passion. Brands like Coca-Cola, Netflix, and McDonald's use red in their branding to convey energy and excitement.</p>
+                        
+                        <h4>🔵 Blue: Trust & Calmness</h4>
+                        <p>Trust, calmness, intelligence, and professionalism. It's often linked to feelings of security, tranquility, and reliability. Facebook, Twitter, and LinkedIn use blue to build trust with their audience.</p>
+                        
+                        <h4>🟢 Green: Growth & Health</h4>
+                        <p>Growth, balance, eco-friendliness, health, and wealth. It's associated with nature and can evoke feelings of calmness and rejuvenation. Brands like Whole Foods, Starbucks, and Spotify use green to convey a sense of health and sustainability.</p>
+                        
+                        <h4>🟡 Yellow: Optimism & Happiness</h4>
+                        <p>Optimism, happiness, warmth, and creativity. It's a vibrant color that can grab attention and stimulate feelings of joy. McDonald's golden arches are a great example of using yellow to evoke happiness and appetite.</p>
+                        
+                        <h4>🟣 Purple: Luxury & Creativity</h4>
+                        <p>Luxury, creativity, wisdom, and sophistication. It's often linked to elegance and refinement. Brands like Hallmark and Cadbury use purple to convey a sense of luxury and creativity.</p>
+                        
+                        <h4>🟠 Orange: Fun & Enthusiasm</h4>
+                        <p>Fun, enthusiasm, creativity, and energy. It's a dynamic color that can stimulate feelings of excitement and playfulness. Brands like Nickelodeon and Fanta use orange to convey a sense of fun and excitement.</p>
+                        
+                        <h4>⚫ Black: Sophistication & Power</h4>
+                        <p>Sophistication, power, elegance, and modernity. It's often associated with luxury and can add a sense of sophistication to a brand. Brands like Apple and Chanel use black to convey a sense of elegance and refinement.</p>
+                        
+                        <h4>⚪ White: Purity & Simplicity</h4>
+                        <p>Purity, simplicity, cleanliness, and innocence. It's often used to create a sense of minimalism and clarity. Brands like Nike and Apple use white to convey a sense of simplicity and sophistication.</p>
+                        
+                        <h3>Choosing Your Brand Color</h3>
+                        <p>When choosing a brand color, consider the emotions and associations you want to evoke in your audience. Ensure that your color choice aligns with your brand personality and values.</p>
+                    </div>
+                `
+            },
+            4: {
+                title: "YOUR SALES WILL TRIPLE WHEN YOUR BRAND DO THIS TO YOUR AUDIENCE",
+                date: "Recent",
+                category: "Sales Strategy",
+                content: `
+                    <h2 class="blog-article-title">YOUR SALES WILL TRIPLE WHEN YOUR BRAND DO THIS TO YOUR AUDIENCE</h2>
+                    <div class="blog-article-meta">
+                        <span class="blog-article-date">Recent</span>
+                        <span class="blog-article-category">Sales Strategy</span>
+                    </div>
+                    <div class="blog-article-content">
+                        <p>Your sales will likely triple when your brand makes your audience feel seen and understood, which can be achieved through several key strategies:</p>
+                        
+                        <h3>Key Strategies for Sales Growth</h3>
+                        
+                        <h4>1. Understand Your Target Audience</h4>
+                        <p>Knowing who your customers are, what they need, and what they value is crucial. Develop an ideal customer profile to tailor your marketing efforts and increase the chances of resonating with your audience.</p>
+                        
+                        <h4>2. Personalization</h4>
+                        <p>Personalized experiences can significantly boost sales. Use data to deliver targeted content, offers, and messages that speak directly to your audience's interests and needs.</p>
+                        
+                        <h4>3. Build Strong Relationships</h4>
+                        <p>Focus on building trust and loyalty with your customers. Excellent customer service, engaging content, and loyalty programs can encourage repeat business and positive word-of-mouth.</p>
+                        
+                        <h4>4. Effective Marketing Strategies</h4>
+                        <p>Utilize social media, email marketing, and influencer partnerships to reach your audience where they are most active. Create valuable content that addresses their pain points and interests.</p>
+                        
+                        <h4>5. Measure and Optimize</h4>
+                        <p>Continuously track your sales performance and customer feedback. Use data analytics to refine your strategies, improve conversion rates, and increase sales.</p>
+                        
+                        <h3>The Psychology Behind It</h3>
+                        <p>When your audience feels seen, they are more likely to buy from you with the understanding that you understand and that you have the solution that they need.</p>
+                        
+                        <p>People buy from brands they feel understand them. When your marketing, messaging, and products make your customers feel seen, heard, and valued, they develop an emotional connection with your brand. This connection translates into:</p>
+                        <ul>
+                            <li>Higher conversion rates</li>
+                            <li>Increased customer loyalty</li>
+                            <li>More referrals and word-of-mouth marketing</li>
+                            <li>Reduced price sensitivity</li>
+                        </ul>
+                        
+                        <p>Remember: People don't buy products or services - they buy solutions to their problems and feelings of being understood. Make your audience feel seen, and watch your sales transform.</p>
+                    </div>
+                `
+            }
+        };
+
+        // Initialize Portfolio Slider
+        function initPortfolioSlider() {
+            new Glide('.glide', {
+                type: 'carousel',
+                startAt: 0,
+                perView: 3,
+                gap: 20,
+                breakpoints: {
+                    1024: {
+                        perView: 2
+                    },
+                    768: {
+                        perView: 1
+                    }
+                },
+                autoplay: 5000,
+                hoverpause: true
+            }).mount();
+        }
+
+        // Dark Mode Toggle
+        function initDarkMode() {
+            const toggleBtn = document.getElementById('dark-mode-toggle');
+            const mobileToggleBtn = document.getElementById('mobile-dark-mode-toggle');
+            const body = document.body;
+
+            function toggleDarkMode() {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                localStorage.setItem('dark-mode', isDark);
+                
+                [toggleBtn, mobileToggleBtn].forEach(btn => {
+                    if (btn) btn.classList.toggle('active', isDark);
+                });
+            }
+
+            const savedMode = localStorage.getItem('dark-mode');
+            if (savedMode === 'true') {
+                body.classList.add('dark-mode');
+                [toggleBtn, mobileToggleBtn].forEach(btn => {
+                    if (btn) btn.classList.add('active');
+                });
+            }
+
+            if (toggleBtn) toggleBtn.addEventListener('click', toggleDarkMode);
+            if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleDarkMode);
+        }
+
+        // Animated Counters
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = Math.ceil(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(counter);
+            });
+        }
+
+        // Service Calculator
+        function initServiceCalculator() {
+            const packageRadios = document.querySelectorAll('input[name="package"]');
+            const durationSlider = document.getElementById('duration');
+            const durationValue = document.getElementById('duration-value');
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const totalCost = document.getElementById('total-cost');
+
+            function calculateTotal() {
+                let total = 0;
+                let selectedPackage = "2500";
+                
+                // Get selected package
+                packageRadios.forEach(radio => {
+                    if (radio.checked) {
+                        selectedPackage = radio.value;
+                    }
+                });
+                
+                // Calculate package cost
+                const months = parseInt(durationSlider.value);
+                
+                if (selectedPackage === "2500") {
+                    total = 2500; // One-time fee
+                } else if (selectedPackage === "1050") {
+                    total = 1050 * months;
+                } else if (selectedPackage === "custom") {
+                    totalCost.textContent = "Let's Talk";
+                    return;
+                }
+                
+                // Add additional services
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        total += parseInt(checkbox.value) * months;
+                    }
+                });
+                
+                // Format and display total
+                if (selectedPackage !== "custom") {
+                    totalCost.textContent = `$${total.toLocaleString()}`;
+                    if (months > 1 && selectedPackage === "1050") {
+                        totalCost.textContent += ` (${months} months)`;
+                    }
+                }
+            }
+
+            // Event listeners
+            packageRadios.forEach(radio => {
+                radio.addEventListener('change', calculateTotal);
+            });
+            
+            durationSlider.addEventListener('input', function() {
+                const months = parseInt(this.value);
+                durationValue.textContent = `${months} Month${months > 1 ? 's' : ''}`;
+                calculateTotal();
+            });
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', calculateTotal);
+            });
+
+            // Initial calculation
+            calculateTotal();
+        }
+
+        // Newsletter Subscription
+        function initNewsletter() {
+            const subscribeBtn = document.getElementById('subscribe-btn');
+            const newsletterEmail = document.getElementById('newsletter-email');
+            
+            if (subscribeBtn) {
+                subscribeBtn.addEventListener('click', () => {
+                    if (newsletterEmail.value) {
+                        // Show success message
+                        const originalText = subscribeBtn.textContent;
+                        subscribeBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Subscribed!';
+                        subscribeBtn.style.backgroundColor = '#10b981';
+                        
+                        // Reset after 3 seconds
+                        setTimeout(() => {
+                            subscribeBtn.textContent = originalText;
+                            subscribeBtn.style.backgroundColor = '';
+                            newsletterEmail.value = '';
+                        }, 3000);
+                    } else {
+                        alert('Please enter your email address.');
+                    }
+                });
+                
+                // Allow Enter key to submit
+                newsletterEmail.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        subscribeBtn.click();
+                    }
+                });
+            }
+        }
+
+        // Blog Functionality
+        function initBlog() {
+            const blogModal = document.getElementById('blog-modal');
+            const closeBlog = document.getElementById('close-blog');
+            const blogArticleContent = document.getElementById('blog-article-content');
+            const readMoreButtons = document.querySelectorAll('.read-more-btn');
+            
+            function openBlogArticle(articleId) {
+                const article = blogArticles[articleId];
+                if (article) {
+                    blogArticleContent.innerHTML = article.content;
+                    blogModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function closeBlogModal() {
+                blogModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const articleId = this.getAttribute('data-article');
+                    openBlogArticle(articleId);
+                });
+            });
+            
+            closeBlog.addEventListener('click', closeBlogModal);
+            blogModal.addEventListener('click', (e) => {
+                if (e.target === blogModal) closeBlogModal();
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && blogModal.classList.contains('active')) {
+                    closeBlogModal();
+                }
+            });
+        }
+
+        // Load More Blog Posts
+        function loadMoreBlogPosts() {
+            const blogContainer = document.querySelector('#blog .grid');
+            const additionalPosts = [
+                {
+                    id: 4,
+                    title: "YOUR SALES WILL TRIPLE WHEN YOUR BRAND DO THIS TO YOUR AUDIENCE",
+                    icon: "fas fa-chart-bar",
+                    excerpt: "Discover how making your audience feel seen and understood can dramatically increase your sales and customer loyalty..."
+                },
+                {
+                    id: 5,
+                    title: "THE MISTAKES THAT COMMUNICATE CONFUSION TO YOUR AUDIENCE",
+                    icon: "fas fa-times-circle",
+                    excerpt: "Learn about common branding mistakes that create confusion and how to avoid them to build trust with your audience..."
+                },
+                {
+                    id: 6,
+                    title: "A STRANGER STUMBLES ON YOUR BRAND BY 1 AM; YOUR BRAND COMMUNICATES EITHER THIS OR THAT",
+                    icon: "fas fa-clock",
+                    excerpt: "Understand how your brand communicates value or confusion during late-night discovery moments..."
+                }
+            ];
+
+            additionalPosts.forEach((post, index) => {
+                const blogPost = document.createElement('div');
+                blogPost.className = 'blog-card';
+                blogPost.setAttribute('data-aos', 'fade-up');
+                blogPost.setAttribute('data-aos-delay', `${100 + (index * 100)}`);
+                
+                blogPost.innerHTML = `
+                    <div class="blog-image">
+                        <i class="${post.icon} text-white text-4xl"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">${post.title}</h3>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Recent</span>
+                            <button class="read-more-btn" data-article="${post.id}">
+                                Read More
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                blogContainer.appendChild(blogPost);
+            });
+
+            // Re-attach event listeners to new buttons
+            document.querySelectorAll('.read-more-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const articleId = this.getAttribute('data-article');
+                    const blogModal = document.getElementById('blog-modal');
+                    const blogArticleContent = document.getElementById('blog-article-content');
+                    
+                    // Add remaining blog articles
+                    const remainingArticles = {
+                        4: {
+                            title: "YOUR SALES WILL TRIPLE WHEN YOUR BRAND DO THIS TO YOUR AUDIENCE",
+                            date: "Recent",
+                            category: "Sales Strategy",
+                            content: `
+                                <h2 class="blog-article-title">YOUR SALES WILL TRIPLE WHEN YOUR BRAND DO THIS TO YOUR AUDIENCE</h2>
+                                <div class="blog-article-meta">
+                                    <span class="blog-article-date">Recent</span>
+                                    <span class="blog-article-category">Sales Strategy</span>
+                                </div>
+                                <div class="blog-article-content">
+                                    <p>Your sales will likely triple when your brand makes your audience feel seen and understood...</p>
+                                    <!-- Full content from your provided text -->
+                                </div>
+                            `
+                        },
+                        5: {
+                            title: "THE MISTAKES THAT COMMUNICATE CONFUSION TO YOUR AUDIENCE",
+                            date: "Recent",
+                            category: "Brand Strategy",
+                            content: `
+                                <h2 class="blog-article-title">THE MISTAKES THAT COMMUNICATE CONFUSION TO YOUR AUDIENCE</h2>
+                                <div class="blog-article-meta">
+                                    <span class="blog-article-date">Recent</span>
+                                    <span class="blog-article-category">Brand Strategy</span>
+                                </div>
+                                <div class="blog-article-content">
+                                    <p>As a brand, your goal is to clearly convey your message, engage your audience, and build trust...</p>
+                                    <!-- Full content from your provided text -->
+                                </div>
+                            `
+                        },
+                        6: {
+                            title: "A STRANGER STUMBLES ON YOUR BRAND BY 1 AM; YOUR BRAND COMMUNICATES EITHER THIS OR THAT",
+                            date: "Recent",
+                            category: "Brand Experience",
+                            content: `
+                                <h2 class="blog-article-title">A STRANGER STUMBLES ON YOUR BRAND BY 1 AM; YOUR BRAND COMMUNICATES EITHER THIS OR THAT</h2>
+                                <div class="blog-article-meta">
+                                    <span class="blog-article-date">Recent</span>
+                                    <span class="blog-article-category">Brand Experience</span>
+                                </div>
+                                <div class="blog-article-content">
+                                    <p>When a stranger stumbles upon your brand at 1 am, it's crucial to make a lasting impression that resonates with them...</p>
+                                    <!-- Full content from your provided text -->
+                                </div>
+                            `
+                        }
+                    };
+
+                    if (remainingArticles[articleId]) {
+                        blogArticleContent.innerHTML = remainingArticles[articleId].content;
+                        blogModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            // Hide the load more button after loading
+            const loadMoreBtn = document.querySelector('#blog .cta-button-primary');
+            if (loadMoreBtn) {
+                loadMoreBtn.style.display = 'none';
+            }
+        }
+
+        // Chat Bot with DeepSeek API
+        function initChat() {
+            const chatBtn = document.getElementById('chat-btn');
+            const chatModal = document.getElementById('chat-modal');
+            const closeChat = document.getElementById('close-chat');
+            const sendChat = document.getElementById('send-chat');
+            const chatInput = document.getElementById('chat-input');
+            const chatMessages = document.querySelector('.chat-messages');
+            
+            // Your DeepSeek API key
+            const DEEPSEEK_API_KEY = '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';
+            
+            // Store conversation history
+            let conversationHistory = [
+                {
+                    role: "system",
+                    content: "You are Saphy AI, a helpful assistant for Saphy Creative, a creative strategy studio. You help answer questions about their services: Brand Strategy ($2,500 one-time), Content Marketing ($1,050/month), and Marketing Strategy (custom pricing). You can also help with general branding and marketing questions. Be friendly, professional, and helpful. Always mention that for urgent inquiries, they can email saphycreative@gmail.com or call +234 913 2395 548."
+                }
+            ];
+
+            function addMessage(message, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${isUser ? 'user-message' : 'bot-message'}`;
+                
+                if (isUser) {
+                    messageDiv.innerHTML = `<div>${message}</div>`;
+                } else {
+                    messageDiv.innerHTML = `<p>${message}</p>`;
+                }
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            async function getAIResponse(userMessage) {
+                try {
+                    // Add typing indicator
+                    const typingDiv = document.createElement('div');
+                    typingDiv.className = 'chat-message bot-message';
+                    typingDiv.innerHTML = `
+                        <p class="typing-indicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </p>
+                    `;
+                    chatMessages.appendChild(typingDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    // Add user message to history
+                    conversationHistory.push({
+                        role: "user",
+                        content: userMessage
+                    });
+
+                    // Call DeepSeek API
+                    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+                            'HTTP-Referer': window.location.origin,
+                            'X-Title': 'Saphy Creative Chat'
+                        },
+                        body: JSON.stringify({
+                            model: 'deepseek/deepseek-chat',
+                            messages: conversationHistory,
+                            max_tokens: 500,
+                            temperature: 0.7
+                        })
+                    });
+
+                    // Remove typing indicator
+                    chatMessages.removeChild(typingDiv);
+
+                    if (!response.ok) {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (data.choices && data.choices[0]) {
+                        const aiResponse = data.choices[0].message.content;
+                        
+                        // Add AI response to history
+                        conversationHistory.push({
+                            role: "assistant",
+                            content: aiResponse
+                        });
+                        
+                        // Add response to chat
+                        addMessage(aiResponse, false);
+                    } else {
+                        throw new Error('No response from AI');
+                    }
+                } catch (error) {
+                    console.error('Error getting AI response:', error);
+                    
+                    // Remove typing indicator if it exists
+                    const typingIndicator = document.querySelector('.typing-indicator');
+                    if (typingIndicator && typingIndicator.parentElement) {
+                        typingIndicator.parentElement.parentElement.remove();
+                    }
+                    
+                    // Fallback response
+                    const fallbackResponses = [
+                        "I apologize, but I'm having trouble connecting to my knowledge base. You can reach us directly at saphycreative@gmail.com or call +234 913 2395 548 for immediate assistance.",
+                        "I'm experiencing some technical difficulties right now. Please email us at saphycreative@gmail.com and we'll get back to you promptly!",
+                        "For the most accurate information about our services, please contact us at saphycreative@gmail.com or call +234 913 2395 548."
+                    ];
+                    
+                    const fallbackResponse = fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+                    addMessage(fallbackResponse, false);
+                }
+            }
+
+            // Toggle chat modal
+            if (chatBtn && chatModal) {
+                chatBtn.addEventListener('click', function() {
+                    chatModal.style.display = chatModal.style.display === 'block' ? 'none' : 'block';
+                    if (chatModal.style.display === 'block') {
+                        chatInput.focus();
+                    }
+                });
+            }
+
+            // Close chat
+            if (closeChat && chatModal) {
+                closeChat.addEventListener('click', function() {
+                    chatModal.style.display = 'none';
+                });
+            }
+
+            // Send message
+            if (sendChat && chatInput) {
+                sendChat.addEventListener('click', function() {
+                    const message = chatInput.value.trim();
+                    if (message) {
+                        addMessage(message, true);
+                        chatInput.value = '';
+                        getAIResponse(message);
+                    }
+                });
+                
+                // Send on Enter key
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendChat.click();
+                    }
+                });
+            }
+
+            // Close chat when clicking outside
+            document.addEventListener('click', function(e) {
+                if (chatModal.style.display === 'block' && 
+                    !chatModal.contains(e.target) && 
+                    !chatBtn.contains(e.target)) {
+                    chatModal.style.display = 'none';
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        function initMobileMenu() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            if (menuBtn && menu) {
+                menuBtn.addEventListener('click', function() {
+                    menu.classList.toggle('hidden');
+                });
+            }
+            
+            document.addEventListener('click', function(e) {
+                if (!menu.contains(e.target) && !menuBtn.contains(e.target) && !menu.classList.contains('hidden')) {
+                    menu.classList.add('hidden');
+                }
+            });
+        }
+
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (!element) return;
+            
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = element.offsetTop - navHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // Back to Top Button
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Navigation link handling
+        function initNavigation() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    scrollToSection(targetId);
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all features
+            initDarkMode();
+            initPortfolioSlider();
+            initCounters();
+            initServiceCalculator();
+            initNewsletter();
+            initBlog();
+            initChat();
+            initMobileMenu();
+            initBackToTop();
+            initNavigation();
+            
+            // Initialize counters with actual values
+            setTimeout(() => {
+                document.getElementById('projects-counter').textContent = '200+';
+                document.getElementById('clients-counter').textContent = '95+';
+                document.getElementById('countries-counter').textContent = '5+';
+            }, 1000);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            AOS.refresh();
+        });
+    </script>
+</body>
+</html>
